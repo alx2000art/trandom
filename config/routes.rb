@@ -1,6 +1,7 @@
 Trandom::Application.routes.draw do
-  resources :posts
-
+  resources :posts do
+       resources :comments
+  end
 
   get "home/index"
 
@@ -37,12 +38,11 @@ Trandom::Application.routes.draw do
   #   end
 
   # Sample resource route with more complex sub-resources
-  #   resources :products do
-  #     resources :comments
+    # resources :posts 
   #     resources :sales do
   #       get 'recent', :on => :collection
   #     end
-  #   end
+     #end
 
   # Sample resource route within a namespace:
   #   namespace :admin do
