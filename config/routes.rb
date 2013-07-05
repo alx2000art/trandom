@@ -5,6 +5,8 @@ Trandom::Application.routes.draw do
 
   get "users/new"
 
+  get "users/show"
+
   get "sign_up" => "users#new", :as => "sign_up"
   #root :to => "users#new"
 
