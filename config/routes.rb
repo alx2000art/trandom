@@ -1,6 +1,9 @@
 Trandom::Application.routes.draw do
 
 
+  resources :tickets
+
+
   get "static_pages/home"
 
   get "static_pages/help"
@@ -13,6 +16,8 @@ Trandom::Application.routes.draw do
   get "users/show"
 
   get "sign_up" => "users#new", :as => "sign_up"
+  post "/sessions/new" => "sessions#create"
+  
   #root :to => "users#new"
 
   resources :users

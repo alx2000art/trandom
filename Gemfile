@@ -12,6 +12,9 @@ gem 'bcrypt-ruby', :require => 'bcrypt'
 group :development, :test do
   
    gem 'rspec-rails', '2.11.0'
+   gem 'guard-rspec', '1.2.1'
+   gem 'guard-spork', '1.2.0'
+   gem 'spork', '0.9.2'
 end
 
 # Gems used only for assets and not required
@@ -28,10 +31,13 @@ end
 
 group :test do
   gem 'capybara', '1.1.2'
+   gem 'libnotify', '0.5.9'
+  gem 'rb-inotify', '~> 0.9'
 end
 
 gem 'jquery-rails'
 
+gem 'rake', '~>10.2.0'
 # To use ActiveModel has_secure_password
 #gem 'bcrypt-ruby', '~> 3.0.0'
 

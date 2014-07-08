@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
   require 'bcrypt'
-  attr_accessible :id, :email, :password_hash, :password_salt, :password, :password_confirmation
+  attr_accessible :id, :email, :password_hash, :password_salt, :password, :password_confirmation, :type_pilot
 
   attr_accessor :password
   before_save :encrypt_password
@@ -18,6 +18,17 @@ class User < ActiveRecord::Base
       self.password_hash =   BCrypt::Engine.hash_secret(password, password_salt)
     end
   end
+
+    def self.authenticate email, password
+      user = User.find_by_email (email)
+
+        if user && user.password_hash == BCrypt::Engine.hash_secret(password, user.password_salt)
+        print user 
+           user
+        else
+            false
+        end
+    end
 
 end
 

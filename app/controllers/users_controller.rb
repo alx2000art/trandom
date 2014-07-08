@@ -7,7 +7,8 @@ class UsersController < ApplicationController
     end
 
   end
-  
+
+
   def show
     @user = User.find_by_id(params[:id]) #.find(params[:id]
 
@@ -17,21 +18,29 @@ class UsersController < ApplicationController
     end
   end
 
-  def new
-    @user = User.new
-  end
+ #GET users/new
+	def new
+		@user = User.new
+	end
 
-  def create
-    @user = User.new(params[:user])
-    if @user.save
-      redirect_to root_url, :notice => "Signed up!"
-    else
-      render "new"
-    end
+	def create
+		@user = User.new params[:user]
+		if @user.save
+			session[:user_id] = @user.id
+      if @user.type_pilot == "girl"
+        redirect_to root_url, :notice => 'Welcome!'
+      else
+        redirect_to tickets_url , :notice => 'Привет Байкер! Выбирай покатайку!'
+      end
 
-  end
-
+		else
+			render 'new'
+		end
+	end
  
+
+
+  
 
 end
 

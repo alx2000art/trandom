@@ -1,4 +1,4 @@
-<h1>Sign Up</h1>
+<h1>Регимся</h1>
 
 <%= form_for @user do |f| %>
   <% if @user.errors.any? %>
@@ -12,7 +12,7 @@
     </div>
   <% end %>
   <p>
-    <%= f.label :email %><br />
+    <%= f.label "Логин" %><br />
     <%= f.text_field :email %>
   </p>
   <p>
@@ -20,8 +20,18 @@
     <%= f.password_field :password %>
   </p>
   <p>
-    <%= f.label :password_confirmation %>
+    <%= f.label :password_confirmation %><br />
     <%= f.password_field :password_confirmation %>
   </p>
-  <p class="button"><%= f.submit %></p>
+  <p>
+    
+    <%= f.radio_button(:type_pilot, "girl") %>
+    <%= label_tag(:girl, "Я Покатайка") %>
+    <%= f.radio_button(:type_pilot, "pilot") %>
+    <%= label_tag(:pilot, "Я Пилот") %>
+   
+
+  </p>
+
+   <p class="button"><%= f.submit %></p>
 <% end %>
