@@ -11,6 +11,8 @@ class User < ActiveRecord::Base
   validates_presence_of :email
   validates_uniqueness_of :email
 
+   has_many :tickets
+
   def encrypt_password
     if password.present?
       #generate_salt

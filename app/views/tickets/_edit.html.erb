@@ -1,3 +1,4 @@
+
 <%= form_for(@ticket) do |f| %>
   <% if @ticket.errors.any? %>
     <div id="error_explanation">
@@ -10,12 +11,31 @@
       </ul>
     </div>
   <% end %>
+<div class="label"><%= @ticket.status %></div>
 
-  <div class="field">
-    <%= f.label :status %><br />
-   <%= f.status='lll' %>
+<% @ticket.user.each do |usr| %>
+  <p>
+    <b>Чей билетик:</b>
+    <%= @ticket.user_id %>
+    <% @usr.email %>
+  </p>
+
+  <p>
+    <b>тип:</b>
+    <%= @usr.email %>
+  </p>
+<% end %>
+<%#*<div class="label"><%= @ticket.funrider%>
+<%#*</div>%>%>
+ <%=@ticket.user do |user| %>
+   <div class="label">
+   <%=user.email %>
   </div>
-  <div class="field">
+ <% end %>
+ <%= fields_for user, index: user.email do |user_form|%>
+      <%= user_form.text_field :type_pilot %>
+    <% end %>
+   <div class="field">
     <%= f.label :funrider %><br />
     <%= f.text_field :funrider %>
   </div>

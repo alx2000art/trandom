@@ -1,0 +1,13 @@
+<%= form_for([@ticket, @ticket.user.build]) do |f| %>
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.text_field :email %>
+  </div>
+  <div class="field">
+    <%= f.label :type_pilot %><br />
+    <%= f.text_area :type_pylot %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

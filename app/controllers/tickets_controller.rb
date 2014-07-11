@@ -28,7 +28,11 @@ class TicketsController < ApplicationController
         
 
     @ticket.funrider = User.find_by_id(session[:user_id]).email
-
+    @ticket.user = User.find_by_id(session[:user_id])
+    @ticket.user_id = session[:user_id]
+    print "============================================"
+    print @ticket.user
+    
     @ticket.status = 'новый'
     
     respond_to do |format|
