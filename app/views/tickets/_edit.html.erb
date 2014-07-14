@@ -13,28 +13,32 @@
   <% end %>
 <div class="label"><%= @ticket.status %></div>
 
-<% @ticket.user.each do |usr| %>
+
   <p>
     <b>Чей билетик:</b>
-    <%= @ticket.user_id %>
-    <% @usr.email %>
+    <%= @ticket.user.email%>
+    <div class="label"><b>рейтинг:</b>
+    <%= @ticket.user.raiting%> (<%= @ticket.user.type_pilot %>)</div>
   </p>
 
   <p>
-    <b>тип:</b>
-    <%= @usr.email %>
+    <b>Экип:</b>
+  <div class="label"><%= @ticket.user.ekip %></div>
+  <%=  @ticket.is_headsize  %>
   </p>
-<% end %>
+  <b>Обо мне:</b>
+  <div class="label"> <%= @ticket.user.about %></div>
+
 <%#*<div class="label"><%= @ticket.funrider%>
 <%#*</div>%>%>
- <%=@ticket.user do |user| %>
-   <div class="label">
-   <%=user.email %>
-  </div>
- <% end %>
- <%= fields_for user, index: user.email do |user_form|%>
-      <%= user_form.text_field :type_pilot %>
-    <% end %>
+ <%#=@ticket.user do |user| %>
+   <%#*<div class="label">%>
+   <%#=user.email %>
+  <%#*</div>%>
+ <%# end %>
+ <%#= fields_for user do |user_form|%>
+      <%#= user_form.text_field :type_pilot %>
+ <%# end %>
    <div class="field">
     <%= f.label :funrider %><br />
     <%= f.text_field :funrider %>

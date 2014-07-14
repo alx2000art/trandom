@@ -5,4 +5,14 @@ class Ticket < ActiveRecord::Base
   validates :about, :presence => true,
                     :length => { :minimum => 10 }
 
+
+    def  is_headsize
+      if user.ekip == 'нет' 
+        if user.head_size != nil
+          return 'размер головы:' + user.head_size
+        else
+          return 'размер головы: нужно померить'
+        end
+      end
+    end
 end
