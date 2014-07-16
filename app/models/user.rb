@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
   require 'bcrypt'
-  attr_accessible :id, :email, :password_hash, :password_salt, :password, :password_confirmation, :type_pilot
+  attr_accessible :id, :email, :password_hash, :password_salt, :password, :password_confirmation, :type_pilot, :ekip
 
   attr_accessor :password
   before_save :encrypt_password
@@ -10,6 +10,7 @@ class User < ActiveRecord::Base
   validates :password, :presence => true, :on => :create
   validates_presence_of :email
   validates_uniqueness_of :email
+  validates :ekip, :presence => true
 
    has_many :tickets
 

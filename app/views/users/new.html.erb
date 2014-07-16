@@ -3,7 +3,7 @@
 <%= form_for @user do |f| %>
   <% if @user.errors.any? %>
     <div class="error_messages">
-      <h2>Form is invalid</h2>
+      <h2>Форма заполнена неверно</h2>
       <ul>
         <% for message in @user.errors.full_messages %>
           <li><%= message %></li>
@@ -29,8 +29,18 @@
     <%= label_tag(:girl, "Я Покатайка") %>
     <%= f.radio_button(:type_pilot, "pilot") %>
     <%= label_tag(:pilot, "Я Пилот") %>
+    <br />
    
+    <%= f.label "Наличие экиперовки" %> <br />
+    <%#= f.ekip_field :ekip %>
 
+    <%= f.select :ekip, options_for_select(['нет', 'только шлем','шлем и куртка(черепаха)','полный экип' ],'нет') %><br />
+    <% if :ekip == 'нет' %>
+      <%= f.label "размер головы"%><br />
+      <%= f.text_field :head_size %>
+    <% end %>
+      <br />
+      <%= f.date_select :birthday,  order: [:day, :month, :year] %>
   </p>
 
    <p class="button"><%= f.submit %></p>
