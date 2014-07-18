@@ -1,6 +1,6 @@
 <h1>Регимся</h1>
 
-<%= form_for @user do |f| %>
+<%= form_for @user, url: {action: "create"}, html: {class: "nifty_form"}  do |f|%>
   <% if @user.errors.any? %>
     <div class="error_messages">
       <h2>Форма заполнена неверно</h2>
@@ -30,18 +30,34 @@
     <%= f.radio_button(:type_pilot, "pilot") %>
     <%= label_tag(:pilot, "Я Пилот") %>
     <br />
+
+    <%= f.label "Обитаю на форуме" %> <br />
+    <%= f.select :forum_check, options_for_select(['motoforum','motocitizen','bikepost','нет' ],'motoforum') %><br />
+
    
     <%= f.label "Наличие экиперовки" %> <br />
     <%#= f.ekip_field :ekip %>
 
     <%= f.select :ekip, options_for_select(['нет', 'только шлем','шлем и куртка(черепаха)','полный экип' ],'нет') %><br />
-    <% if :ekip == 'нет' %>
-      <%= f.label "размер головы"%><br />
-      <%= f.text_field :head_size %>
-    <% end %>
+
+       <br />
+       <%= f.label "Дата рождения" %> <br />
+
+      <%= f.date_select :birthday, :start_year => Date.current.year, :end_year => 1920,  order: [:day, :month, :year] %><br />
+
+       <%= f.label "вес" %> <br />
+       <%= f.number_field :weight, :size => 3, in: 40..120, step: 5 %>  <br />
+
       <br />
-      <%= f.date_select :birthday,  order: [:day, :month, :year] %>
-  </p>
+      <%= f.label "размер головы"%><br />
+      <%= f.text_field :head_size, :size => 3 %><br />
+
+      <%= f.label "контакт в соц-сетях" %><br />
+      <%= f.url_field :homesite %><br />
+
+    <%= f.label "мобильный телефон" %><br />
+      <%= f.telephone_field :mob_tel %>
+     </p>
 
    <p class="button"><%= f.submit %></p>
 <% end %>
