@@ -56,7 +56,10 @@
       <%= f.url_field :homesite %><br />
 
     <%= f.label "мобильный телефон" %><br />
-      <%= f.telephone_field :mob_tel %>
+    <div class="user_phone">
+      <%= f.text_field :mob_tel, :size => 13 ,placeholder: "(___) ___ __ __" , class: "rfield" %><br />
+    </div>
+
      </p>
 
    <p class="button"><%= f.submit %></p>
